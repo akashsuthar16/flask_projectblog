@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block body %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{ url_for('static' , filename='img/home-bg.jpg') }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Admin Panel</h1>
+                            <span class="subheading">Manage your posts & change them</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    
+                    <!-- <div class="post-preview">
+                        <a href="">
+                            <h2 class="post-title">Welcome</h2>
+                            <h3 class="post-subtitle">Manage your posts & change them</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="#!">Start Bootstrap</a>
+                            on 
+                        </p>
+                    </div> -->
+                    <!-- Divider-->
+                   <!-- <hr class="my-4" /> -->
+                    <!-- Post preview-->
+                    <a class="btn btn-primary text-uppercase float-right" href="/logout">Logout</a>
+            
+                    <a href="/addnewpage"><button class="btn btn-primary" style="float: right;" type="submit">Add New Post</button></a>
+                    <br>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in postseen %}
+                          <tr>
+                            <th scope="row">{{i.sno}}</th>
+                            <td>{{i.title}}</td>
+                            <td>{{i.date}}</td>
+                            <td><a href="/edit/{{i.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                            <td><a href="/delete/{{i.sno}}"><button class="btn btn-danger">Delete</button></a></td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- {% if number!=0 %}
+                    <a class="btn btn-primary text-uppercase mx-3" style="float: left;" href="{{prev}}">&larr; Older</a>
+                    {% endif %}
+                    <a class="btn btn-primary text-uppercase float-right" href="{{next}}"> Next →</a> -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    </body>
+</html>
+{% endblock %}
